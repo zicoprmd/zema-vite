@@ -1,0 +1,19 @@
+.horizontal {
+  display: flex;
+  background-color: #dfdfdf;
+  padding: 2rem;
+  max-width: 100vw;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  .image-wrapper {
+    margin-right: 2rem;
+    height: 250px;
+    white-space: nowrap;
+    transition: ease 1s;
+    .image {
+      display: inline-block;
+      height: 100%;
+      border-radius: 5px;
+    }
+  }
+}

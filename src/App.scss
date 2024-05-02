@@ -1,0 +1,33 @@
+$graywhite: #f2f2f2;
+$white: #ffffff;
+
+:root {
+  --color-bg: #1f1f38;
+  --color-bg1: #5d7457;
+  --color-bg-variant: #2c2c6c;
+  --color-bg-variant1: #b3c9ac;
+  --color-primary: #4db5ff;
+  --color-primary-variant: rgba(77, 181, 225, 0.4);
+  --color-white: #fff;
+  --color-light: rgba(255, 255, 255, 0.6);
+
+  --transitition: all 400ms ease;
+
+  --container-width-lg: 75%;
+  --container-width-md: 86%;
+  --container-width-ms: 90%;
+
+  --darkgreen: #425e25;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
