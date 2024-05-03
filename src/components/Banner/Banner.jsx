@@ -13,7 +13,7 @@ import CarouselControls from './CarouselControls';
 import CarouselIndicators from './CarouselIndicators';
 import TitleBanner from './TitleBanner';
 
-const Banner = ({ interval = 3000, title = true }) => {
+const Banner = ({ interval = 3000, title = false }) => {
   //bikin array banner
   const banners = [ban1, ban2, ban3, ban4];
   //current slide state

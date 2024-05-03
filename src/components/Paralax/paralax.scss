@@ -1,0 +1,34 @@
+.paralax {
+  padding-top: 2rem;
+  opacity: 1;
+  .paralax-img {
+    background-image: url('../../assets/paralax/paralax-1.JPG');
+    height: 90vh;
+    //paralaxscrolling
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    @media screen and (max-width: 1024px) {
+    }
+    @media screen and (max-width: 501px) {
+      background-size: 350%;
+    }
+  }
+  .paralax-text {
+    color: white;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    letter-spacing: 10px;
+    font-size: 25px;
+    background-color: transparent;
+    position: relative;
+    bottom: 50vh;
+    transform: translateY(100%);
+    /* .border {
+      background-color: #727171;
+      padding: 1rem;
+    } */
+  }
+}

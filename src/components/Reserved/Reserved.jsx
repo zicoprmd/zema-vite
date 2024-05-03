@@ -9,7 +9,7 @@ const Reserved = () => {
         <p>
           All right reserved, created by
           <a
-            href="https://twitter.com/zicoprmd"
+            href="https://zicoprmd.github.io/linktree"
             target="blank"
             rel="noopenner norefferer">
             {' '}
