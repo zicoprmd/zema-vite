@@ -2,6 +2,7 @@ import React from 'react';
 import './Article.scss';
 //import img
 import art_img2 from '../../assets/article/z4.JPG';
+import useDragger from '../../hooks/useDragger';
 
 const Article2 = () => {
   return (
@@ -18,6 +19,7 @@ const Article2 = () => {
             Panjang tubuhmu 49 cm, dan di dalam ukuran itu terdapat dunia yang
             menunggu untuk dijelajahi.
             <br />
+            <br />
             <strong>Petualanganku Dimulai</strong> Dengan berat badan dan
             panjang tubuh yang pas, aku memulai perjalananmu. Setiap hari adalah
             babak baru, setiap langkah adalah petualangan. aku akan belajar,
@@ -27,7 +29,7 @@ const Article2 = () => {
             berada di sampingku, mendukungku, dan mencintaiku, Virgo Boy! 🌟👶✨
           </p>
         </div>
-        <div className="image-wrapper imgwrp-dom">
+        <div id="zem1" className="image-wrapper imgwrp-dom">
           <img src={art_img2} className="image image-2" alt="article2"></img>
         </div>
       </div>

@@ -13,7 +13,7 @@ const Reserved = () => {
             target="blank"
             rel="noopenner norefferer">
             {' '}
-            zico permadi, MD
+            Zico Permadi, MD
           </a>
         </p>
       </div>

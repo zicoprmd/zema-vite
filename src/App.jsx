@@ -2,6 +2,7 @@ import { useState } from 'react';
 //scss
 import './App.scss';
 //import components
+import Navbar from './components/Nav/Navbar';
 import Banner from './components/Banner/Banner';
 import Article1 from './components/Article/Article1';
 import Article2 from './components/Article/Article2';
@@ -15,6 +16,7 @@ function App() {
 
   return (
     <section className="App">
+      <Navbar />
       <Banner />
       <Article1 />
       <Paralax />

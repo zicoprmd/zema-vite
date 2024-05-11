@@ -1,5 +1,5 @@
 # Gunakan image dari docker community yang sudah ada, disini menggunakan alpine-linux yang sudah terinstal node versi 16.17
-FROM node:16.17-alpine as node
+FROM node:20-alpine as node
 # Jalankan perintah untuk update package list
 RUN apk update && \
     apk add --no-cache curl
