@@ -1,15 +1,8 @@
-# Gunakan image dari docker community yang sudah ada, disini menggunakan alpine-linux yang sudah terinstal node versi 16.17
-FROM node:20-alpine as node
-# Jalankan perintah untuk update package list
-RUN apk update && \
-    apk add --no-cache curl
-# Deskripsikan direktori project di dalam container docker nanti
+FROM node:20-alpine AS build
 WORKDIR /app
-# Copy semua file project ke dalam direktori /app
+COPY package*.json ./
+RUN npm ci
 COPY . .
-# Jalankan perintah untuk install & build next.js
-RUN npm install
-# Definikan port yang akan digunakan dalam container docker
-EXPOSE 3000
-# Jalankan npm run start di terminal
-CMD ["npm", "run", "dev"]
+RUN npm run build
+EXPOSE 5173
+CMD ["npm", "run", "preview"]

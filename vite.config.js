@@ -7,7 +7,7 @@ export default defineConfig({
   assetsInclude: ['**/*.JPG'],
   base: '/',
   preview: {
-    port: 3000,
+    port: 5173,
     strictPort: true,
   },
   server: {
