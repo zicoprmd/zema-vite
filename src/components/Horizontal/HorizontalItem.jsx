@@ -1,9 +1,15 @@
-const HorizontalItem = ({ image, i }) => {
+import PropTypes from 'prop-types';
+
+const HorizontalItem = ({ image }) => {
   return (
-    <div key={i} className="image-wrapper">
-      <img src={image} alt="img-zema-scroll" className="image image-1"></img>
+    <div className="image-wrapper">
+      <img src={image} alt="Zema gallery" className="image" />
     </div>
   );
+};
+
+HorizontalItem.propTypes = {
+  image: PropTypes.string.isRequired,
 };
 
 export default HorizontalItem;

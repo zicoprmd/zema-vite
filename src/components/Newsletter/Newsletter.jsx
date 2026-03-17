@@ -1,29 +1,30 @@
-import React from 'react';
-//scss
 import './Newsletter.scss';
 
 const Newsletter = () => {
-  const form = document.forms['zema-form'];
-
   const greeting = () => {
-    alert('email submitted');
-    form.reset();
+    const form = document.forms['zema-form'];
+    alert('Thank you! Your message has been sent. 💌');
+    if (form) form.reset();
   };
+
   return (
-    <section>
-      <div id="newsletter">
-        <div className="title-wrapper">
-          <h2 className="title-news">NEWSLETTER</h2>
-        </div>
+    <section id="newsletter" className="newsletter-section">
+      <div className="newsletter-inner">
+        <span className="newsletter-eyebrow">✦ Stay Connected ✦</span>
+        <h2 className="newsletter-title">Follow Zema&apos;s journey</h2>
+        <p className="newsletter-subtitle">
+          Get updates on milestones, memories, and moments as our little one
+          grows. Sent with love.
+        </p>
         <form
           name="zema-form"
           method="POST"
           action="https://formsubmit.co/zicoprmd@gmail.com"
-          enctype="multipart/form-data"
-          className="forms-wrapper">
-          <input type="email" name="email" placeholder="Email" required />
-          <button className="btn-submit" onClick={greeting}>
-            Submit
+          encType="multipart/form-data"
+          className="newsletter-form">
+          <input type="email" name="email" placeholder="Your email address" required />
+          <button className="btn-submit" type="submit" onClick={greeting}>
+            Subscribe
           </button>
         </form>
       </div>

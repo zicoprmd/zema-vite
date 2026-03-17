@@ -1,77 +1,132 @@
-#newsletter {
-  display: flex;
-  padding: 2rem;
-  .title-wrapper {
-    width: 50vw;
-    .title-news {
-      margin-left: 4rem;
-    }
+.newsletter-section {
+  background: linear-gradient(135deg, #4a6b4d 0%, #7a9e7e 100%);
+  padding: 6rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.04);
+    pointer-events: none;
   }
-  .forms-wrapper {
-    display: flex;
-    width: 50vw;
-    input {
-      width: 100%;
-      padding: 1rem;
-      background-color: #dfdfdf;
-      border: none;
-      border-radius: 15px;
-    }
-    .btn-submit {
-      display: inline-block;
-      width: 40%;
-      margin-left: 1rem;
-      padding: 1rem 2rem;
-      border-radius: 50px;
-      background-color: #425e25;
-      color: #fff;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    right: -40px;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.04);
+    pointer-events: none;
+  }
+
+  .newsletter-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 560px;
+    margin: 0 auto;
+
+    .newsletter-eyebrow {
+      display: block;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.35em;
       text-transform: uppercase;
-      letter-spacing: 0.15rem;
-      transition: all 0.3s;
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
-      justify-content: center;
-      text-align: center;
-      &:after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: #425e25;
-        z-index: -2;
-      }
-      &:before {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 0%;
-        height: 100%;
-        background-color: darken(#424242, 15%);
-        transition: all 0.3s;
-        z-index: -1;
-      }
-      &:hover {
-        color: #fff;
-        &:before {
-          width: 100%;
+      color: #e8d49e;
+      margin-bottom: 1.25rem;
+    }
+
+    .newsletter-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 700;
+      color: #fffcf8;
+      margin-bottom: 0.75rem;
+      line-height: 1.25;
+    }
+
+    .newsletter-subtitle {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: rgba(255, 252, 248, 0.75);
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 0.75rem;
+      max-width: 480px;
+      margin: 0 auto;
+
+      input[type='email'] {
+        flex: 1;
+        padding: 0.9rem 1.25rem;
+        background-color: rgba(255, 255, 255, 0.15);
+        border: 1.5px solid rgba(255, 255, 255, 0.3);
+        border-radius: 3rem;
+        color: #fffcf8;
+        font-family: 'Lato', sans-serif;
+        font-size: 0.95rem;
+        outline: none;
+        transition: all 0.3s ease;
+
+        &::placeholder {
+          color: rgba(255, 252, 248, 0.55);
+        }
+
+        &:focus {
+          background-color: rgba(255, 255, 255, 0.22);
+          border-color: rgba(232, 212, 158, 0.7);
         }
       }
-    }
-  }
-  @media screen and (max-width: 501px) {
-    display: block;
-    .title-wrapper,
-    .forms-wrapper {
-      width: 80vw;
-      justify-content: center;
 
-      .title-news {
-        align-items: center;
-        margin-bottom: 1rem;
+      .btn-submit {
+        flex-shrink: 0;
+        padding: 0.9rem 1.75rem;
+        background-color: #c9a84c;
+        border: none;
+        border-radius: 3rem;
+        color: #2d2d2d;
+        font-family: 'Lato', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        white-space: nowrap;
+
+        &:hover {
+          background-color: #e8d49e;
+          transform: translateY(-2px);
+          box-shadow: 0 6px 20px rgba(201, 168, 76, 0.45);
+        }
+
+        &:active {
+          transform: translateY(0);
+        }
+      }
+
+      @media screen and (max-width: 480px) {
+        flex-direction: column;
+
+        input[type='email'],
+        .btn-submit {
+          width: 100%;
+        }
       }
     }
   }

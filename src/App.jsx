@@ -1,7 +1,4 @@
-import { useState } from 'react';
-//scss
 import './App.scss';
-//import components
 import Navbar from './components/Nav/Navbar';
 import Banner from './components/Banner/Banner';
 import Article1 from './components/Article/Article1';
@@ -12,8 +9,6 @@ import Newsletter from './components/Newsletter/Newsletter';
 import Reserved from './components/Reserved/Reserved';
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <section className="App">
       <Navbar />

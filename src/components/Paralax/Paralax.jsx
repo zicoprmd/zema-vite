@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-//scss
+import { useState } from 'react';
 import './paralax.scss';
 
 const Paralax = () => {
@@ -17,9 +16,14 @@ const Paralax = () => {
 
   return (
     <section className="paralax">
-      <div className={gray ? 'paralax-img' : 'paralax-img gray'}></div>
-      <div className="paralax-text">
-        <span className="border">ZEMA ARRAZKA PERMADI</span>
+      <div className={gray ? 'paralax-img gray' : 'paralax-img'} />
+      <div className="paralax-overlay" />
+      <div className="paralax-content">
+        <span className="paralax-label">✦ Named with love ✦</span>
+        <div className="paralax-ornament" />
+        <h2 className="paralax-name">ZEMA ARRAZKA PERMADI</h2>
+        <div className="paralax-ornament" />
+        <p className="paralax-tagline">25 · 08 · 2022 &nbsp;·&nbsp; Virgo &nbsp;·&nbsp; 2810g &nbsp;·&nbsp; 49cm</p>
       </div>
     </section>
   );

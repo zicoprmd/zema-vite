@@ -1,16 +1,21 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 
-const CarouselItem = ({ slide, i, stopSlide, startSLide }) => {
+const CarouselItem = ({ slide, stopSlide, startSLide }) => {
   return (
     <div
       id="banner"
-      key={i}
       className="carousel-item"
       onMouseEnter={stopSlide}
       onMouseOut={startSLide}>
-      <img src={slide} alt="banner" className="image-banner" />
+      <img src={slide} alt="Zema Arrazka Permadi" className="image-banner" />
     </div>
   );
+};
+
+CarouselItem.propTypes = {
+  slide: PropTypes.string.isRequired,
+  stopSlide: PropTypes.func.isRequired,
+  startSLide: PropTypes.func.isRequired,
 };
 
 export default CarouselItem;

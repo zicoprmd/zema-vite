@@ -1,56 +1,48 @@
-//scss
 import './Banner.scss';
-//state
-import { React, useState, useEffect, useRef } from 'react';
-// Import image
+import { useState, useEffect, useRef, useCallback } from 'react';
+import PropTypes from 'prop-types';
 import ban1 from '../../assets/banner/zem1.JPG';
 import ban2 from '../../assets/banner/zem6.JPG';
 import ban3 from '../../assets/banner/zem7.JPG';
 import ban4 from '../../assets/banner/zem8.JPG';
-//components
 import CarouselItem from './CarouselItem';
 import CarouselControls from './CarouselControls';
 import CarouselIndicators from './CarouselIndicators';
-import TitleBanner from './TitleBanner';
 
-const Banner = ({ interval = 3000, title = false }) => {
-  //bikin array banner
-  const banners = [ban1, ban2, ban3, ban4];
-  //current slide state
+const banners = [ban1, ban2, ban3, ban4];
+
+const Banner = ({ interval = 4000 }) => {
   const [currentSlide, setcurrentSlide] = useState(0);
   const slideInterval = useRef();
 
-  //tombol previous/mundur
-  const prev = () => {
-    startSlideTimer();
-    const index = currentSlide > 0 ? currentSlide - 1 : banners.length - 1;
-    setcurrentSlide(index);
-  };
-  //tombol next/maju
-  const next = () => {
-    startSlideTimer();
-    const index = currentSlide < banners.length + 1 ? currentSlide + 1 : 0;
-    setcurrentSlide(index);
-  };
-  //ganti index
-  const switchSlide = (index) => {
-    startSlideTimer();
-    setcurrentSlide(index);
-  };
-  //start slide timer
-  const startSlideTimer = () => {
-    stopSlideTimer();
-    slideInterval.current = setInterval(() => {
-      setcurrentSlide((currentSlide) =>
-        currentSlide < banners.length - 1 ? currentSlide + 1 : 0
-      );
-    }, interval);
-  };
-  //stop slide timer
-  const stopSlideTimer = () => {
+  const stopSlideTimer = useCallback(() => {
     if (slideInterval.current) {
       clearInterval(slideInterval.current);
     }
+  }, []);
+
+  const startSlideTimer = useCallback(() => {
+    stopSlideTimer();
+    slideInterval.current = setInterval(() => {
+      setcurrentSlide((curr) =>
+        curr < banners.length - 1 ? curr + 1 : 0
+      );
+    }, interval);
+  }, [interval, stopSlideTimer]);
+
+  const prev = () => {
+    startSlideTimer();
+    setcurrentSlide((curr) => (curr > 0 ? curr - 1 : banners.length - 1));
+  };
+
+  const next = () => {
+    startSlideTimer();
+    setcurrentSlide((curr) => (curr < banners.length - 1 ? curr + 1 : 0));
+  };
+
+  const switchSlide = (index) => {
+    startSlideTimer();
+    setcurrentSlide(index);
   };
 
   useEffect(() => {
@@ -58,10 +50,10 @@ const Banner = ({ interval = 3000, title = false }) => {
     return () => {
       stopSlideTimer();
     };
-  }, []);
+  }, [startSlideTimer, stopSlideTimer]);
 
   return (
-    <section className="container">
+    <section id="banner" className="hero-section">
       <div className="carousel">
         <div
           className="carousel-inner"
@@ -82,9 +74,24 @@ const Banner = ({ interval = 3000, title = false }) => {
           switchSlide={switchSlide}
         />
       </div>
-      {title && <TitleBanner />}
+      <div className="hero-overlay" />
+      <div className="hero-content">
+        <span className="hero-eyebrow">✦ With all my heart ✦</span>
+        <h1 className="hero-title">
+          Welcome to the world,
+          <span className="hero-title-italic">Zema Arrazka Permadi</span>
+        </h1>
+        <p className="hero-subtitle">
+          Born on a blessed Thursday, 25 August 2022 — our little Virgo, our
+          greatest gift, our forever joy.
+        </p>
+      </div>
     </section>
   );
+};
+
+Banner.propTypes = {
+  interval: PropTypes.number,
 };
 
 export default Banner;

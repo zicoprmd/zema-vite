@@ -1,36 +1,43 @@
-import React from 'react';
 import './Article.scss';
-//import img
 import art_img2 from '../../assets/article/z4.JPG';
-import useDragger from '../../hooks/useDragger';
 
 const Article2 = () => {
   return (
-    <section id="zema2">
-      <div className="article article-2">
-        <div className="image-wrapper imgwrp-mobile">
-          <img src={art_img2} className="image image-2" alt="article2"></img>
+    <section id="zema2" className="article-section alt-bg">
+      <div className="article-inner reverse">
+        <div className="article-image-wrap">
+          <img src={art_img2} className="article-img" alt="Zema growing" />
         </div>
-        <div className="content-wrapper">
-          <p className="text">
-            <strong>Berat Badan dan Panjang Tubuh</strong> Ketika aku pertama
-            kali lahir, timbangan menunjukkan angka 2810 gram. Itu adalah bukti
-            betapa berharganya setiap grammu bagi orang-orang yang mencintaimu.
-            Panjang tubuhmu 49 cm, dan di dalam ukuran itu terdapat dunia yang
-            menunggu untuk dijelajahi.
+        <div className="article-content">
+          <span className="article-tag">✦ The Beginning</span>
+          <h2 className="article-heading">
+            Small in size, infinite in wonder
+          </h2>
+          <div className="article-divider" />
+          <div className="article-stats">
+            <div className="stat">
+              <span className="stat-value">2810</span>
+              <span className="stat-label">grams</span>
+            </div>
+            <div className="stat">
+              <span className="stat-value">49</span>
+              <span className="stat-label">centimeters</span>
+            </div>
+            <div className="stat">
+              <span className="stat-value">♍</span>
+              <span className="stat-label">Virgo Boy</span>
+            </div>
+          </div>
+          <p className="article-body">
+            Di dalam setiap grammu terdapat dunia yang menunggu untuk dijelajahi.
+            Dengan berat dan panjang yang pas, petualanganmu dimulai — setiap
+            hari babak baru, setiap langkah sebuah petualangan.
             <br />
             <br />
-            <strong>Petualanganku Dimulai</strong> Dengan berat badan dan
-            panjang tubuh yang pas, aku memulai perjalananmu. Setiap hari adalah
-            babak baru, setiap langkah adalah petualangan. aku akan belajar,
-            tumbuh, dan menemukan banyak hal. Dan di antara semua itu, ada satu
-            hal yang pasti: dunia ini lebih indah karena kehadiranku. Teruslah
-            menulis cerita dihidupku. Semua orang di sekitarku akan selalu
-            berada di sampingku, mendukungku, dan mencintaiku, Virgo Boy! 🌟👶✨
+            Semua orang di sekitarmu akan selalu berada di sampingmu,
+            mendukungmu, dan mencintaimu. Dunia ini lebih indah karena
+            kehadiranmu. 🌟✨
           </p>
-        </div>
-        <div id="zem1" className="image-wrapper imgwrp-dom">
-          <img src={art_img2} className="image image-2" alt="article2"></img>
         </div>
       </div>
     </section>
