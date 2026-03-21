@@ -500,7 +500,7 @@ const saveGrowthRecord = async (record) => {
 
   if (!supabase) {
     const existing = JSON.parse(
-      localStorage.getItem('zema_growth_data') || '[]'
+      localStorage.getItem('zema_growth_data') || '[]',
     );
     const idx = existing.findIndex((r) => r.id === record.id);
     const toSave = { ...record, id: record.id || crypto.randomUUID() };
@@ -538,11 +538,11 @@ const saveGrowthRecord = async (record) => {
 const deleteGrowthRecord = async (id) => {
   if (!supabase) {
     const existing = JSON.parse(
-      localStorage.getItem('zema_growth_data') || '[]'
+      localStorage.getItem('zema_growth_data') || '[]',
     );
     localStorage.setItem(
       'zema_growth_data',
-      JSON.stringify(existing.filter((r) => r.id !== id))
+      JSON.stringify(existing.filter((r) => r.id !== id)),
     );
     return;
   }
@@ -575,7 +575,7 @@ const saveMilestones = async (achieved) => {
     .from('milestones')
     .upsert(
       { id: 1, achieved, updated_at: new Date().toISOString() },
-      { onConflict: 'id' }
+      { onConflict: 'id' },
     );
   if (error) {
     console.error('Save milestones error:', error);
@@ -645,7 +645,7 @@ const Timeline = () => {
       const email = session.user.email?.toLowerCase();
       setIsAuthorized(
         AUTHORIZED_EMAILS.length === 0 ||
-          AUTHORIZED_EMAILS.some((e) => e.toLowerCase() === email)
+          AUTHORIZED_EMAILS.some((e) => e.toLowerCase() === email),
       );
     }
   }, []);
@@ -688,7 +688,7 @@ const Timeline = () => {
         setUser(session.user);
         const email = session.user.email?.toLowerCase();
         setIsAuthorized(
-          AUTHORIZED_EMAILS.some((e) => e.toLowerCase() === email)
+          AUTHORIZED_EMAILS.some((e) => e.toLowerCase() === email),
         );
       } else {
         setUser(null);
@@ -757,13 +757,13 @@ const Timeline = () => {
     };
     if (editingGrowth?.id) {
       setGrowthRecords((records) =>
-        records.map((r) => (r.id === normalized.id ? normalized : r))
+        records.map((r) => (r.id === normalized.id ? normalized : r)),
       );
     } else {
       setGrowthRecords((records) =>
         [...records, normalized].sort(
-          (a, b) => new Date(a.date) - new Date(b.date)
-        )
+          (a, b) => new Date(a.date) - new Date(b.date),
+        ),
       );
     }
     setShowGrowthForm(false);
@@ -832,7 +832,7 @@ const Timeline = () => {
     .sort((a, b) => a.ageMonth - b.ageMonth);
 
   const currentAgeMonths = getAgeInMonths(
-    new Date().toISOString().split('T')[0]
+    new Date().toISOString().split('T')[0],
   );
 
   return (
@@ -921,7 +921,9 @@ const Timeline = () => {
           <span>{user.email}</span>
           {isAuthorized ? (
             <span className="blog-auth-badge authorized">Authorized</span>
-          ) : }
+          ) : (
+            <span className="blog-auth-badge viewer">Viewer</span>
+          )}
           <button onClick={handleLogout} className="blog-logout-btn">
             Logout
           </button>
@@ -1106,8 +1108,8 @@ const Timeline = () => {
                       growthRecords.find(
                         (r) =>
                           r.height ===
-                          Math.max(...growthRecords.map((r) => r.height))
-                      )?.ageMonth
+                          Math.max(...growthRecords.map((r) => r.height)),
+                      )?.ageMonth,
                     )})`
                   : ''}
               </span>
@@ -1125,8 +1127,8 @@ const Timeline = () => {
                       growthRecords.find(
                         (r) =>
                           r.weight ===
-                          Math.max(...growthRecords.map((r) => r.weight))
-                      )?.ageMonth
+                          Math.max(...growthRecords.map((r) => r.weight)),
+                      )?.ageMonth,
                     )})`
                   : ''}
               </span>
@@ -1475,10 +1477,10 @@ const Timeline = () => {
             {['Personal-Social', 'Fine Motor', 'Gross Motor', 'Language'].map(
               (cat) => {
                 const catMilestones = DENVER_MILESTONES.filter(
-                  (m) => m.category === cat
+                  (m) => m.category === cat,
                 );
                 const achievedInCat = catMilestones.filter(
-                  (m) => achieved[m.id]
+                  (m) => achieved[m.id],
                 ).length;
                 return (
                   <div key={cat} className="milestone-category">
@@ -1526,7 +1528,7 @@ const Timeline = () => {
                     </div>
                   </div>
                 );
-              }
+              },
             )}
           </div>
         </div>
