@@ -99,12 +99,52 @@ const milestones = [
   },
 ];
 
+const ZEMA_BIRTHDAY = '2022-08-22';
+
+const getNextBirthday = () => {
+  const today = new Date();
+  const birthday = new Date(`${ZEMA_BIRTHDAY}T00:00:00`);
+  birthday.setFullYear(today.getFullYear());
+  if (birthday < today) birthday.setFullYear(today.getFullYear() + 1);
+  return birthday;
+};
+
+const getAge = () => {
+  const today = new Date();
+  const birthday = new Date(`${ZEMA_BIRTHDAY}T00:00:00`);
+  let years = today.getFullYear() - birthday.getFullYear();
+  const monthDiff = today.getMonth() - birthday.getMonth();
+  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthday.getDate())) {
+    years--;
+  }
+  return years;
+};
+
+const getCountdown = () => {
+  const today = new Date();
+  const nextBirthday = getNextBirthday();
+  const diff = nextBirthday - today;
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  return { days, hours, minutes, nextBirthday };
+};
+
 const Timeline = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [serverImages, setServerImages] = useState({});
   const [uploadingFor, setUploadingFor] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [countdown, setCountdown] = useState(getCountdown());
   const totalSlides = milestones.length;
+
+  // Update countdown every minute
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCountdown(getCountdown());
+    }, 60000);
+    return () => clearInterval(interval);
+  }, []);
 
   // Fetch timeline images from API
   useEffect(() => {
@@ -268,6 +308,33 @@ const Timeline = () => {
         <button className="timeline-arrow timeline-arrow--right" onClick={nextSlide}>
           Selanjutnya →
         </button>
+      </div>
+
+      {/* Birthday Countdown */}
+      <div className="birthday-countdown">
+        <div className="birthday-countdown__cake">🎂</div>
+        <div className="birthday-countdown__title">
+          Ulang Tahun Zema ke-{getAge() + 1}
+        </div>
+        <div className="birthday-countdown__subtitle">
+          {countdown.nextBirthday.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}
+        </div>
+        <div className="birthday-countdown__timer">
+          <div className="birthday-countdown__unit">
+            <span className="countdown-number">{countdown.days}</span>
+            <span className="countdown-label">Hari</span>
+          </div>
+          <span className="countdown-sep">:</span>
+          <div className="birthday-countdown__unit">
+            <span className="countdown-number">{String(countdown.hours).padStart(2, '0')}</span>
+            <span className="countdown-label">Jam</span>
+          </div>
+          <span className="countdown-sep">:</span>
+          <div className="birthday-countdown__unit">
+            <span className="countdown-number">{String(countdown.minutes).padStart(2, '0')}</span>
+            <span className="countdown-label">Menit</span>
+          </div>
+        </div>
       </div>
     </section>
   );

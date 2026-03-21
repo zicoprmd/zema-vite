@@ -345,7 +345,102 @@
   }
 }
 
+.birthday-countdown {
+  background: linear-gradient(135deg, #fff9f0 0%, #fff5e6 100%);
+  border: 2px solid rgba(201, 168, 76, 0.3);
+  border-radius: 1.5rem;
+  padding: 2rem 2.5rem;
+  text-align: center;
+  margin-top: 1rem;
+  width: 100%;
+  max-width: 420px;
+
+  &__cake {
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+    animation: bounce 2s ease-in-out infinite;
+  }
+
+  &__title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #2d2d2d;
+    margin-bottom: 0.25rem;
+  }
+
+  &__subtitle {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.85rem;
+    color: #c9a84c;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.25rem;
+  }
+
+  &__timer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  &__unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 60px;
+  }
+
+  .countdown-number {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #c9a84c;
+    line-height: 1;
+  }
+
+  .countdown-label {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.65rem;
+    color: #8a8a8a;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 0.25rem;
+  }
+
+  .countdown-sep {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.5rem;
+    color: #c9a84c;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
 @media (max-width: 600px) {
+  .birthday-countdown {
+    padding: 1.5rem 1.25rem;
+
+    &__cake {
+      font-size: 2.5rem;
+    }
+
+    .countdown-number {
+      font-size: 1.5rem;
+    }
+
+    &__unit {
+      min-width: 48px;
+    }
+  }
+
   .timeline-page {
     padding: 4rem 1rem 3rem;
   }
