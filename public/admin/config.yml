@@ -1,0 +1,19 @@
+backend:
+  name: github
+  repo: zicoprmd/zema-vite
+  branch: main
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "blog"
+    label: "Blog"
+    folder: "src/posts"
+    create: true
+
+    fields:
+      - { label: "Tanggal", name: "date", widget: "datetime" }
+      - { label: "Judul", name: "title", widget: "string" }
+      - { label: "Cerita", name: "body", widget: "markdown" }
+      - { label: "Foto", name: "image", widget: "image", required: false }

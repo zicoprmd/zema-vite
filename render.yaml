@@ -1,0 +1,28 @@
+# render.yaml - Render.com deployment configuration
+# Deploy manual:
+# 1. Go to render.com
+# 2. Create Web Service
+# 3. Connect your GitHub repo
+# 4. Set:
+#    - Root Directory: backend
+#    - Build Command: npm install
+#    - Start Command: npm start
+# 5. Add Environment Variable:
+#    - ALLOWED_ORIGINS = https://your-vercel-site.vercel.app,http://localhost:3000
+# 6. Deploy!
+
+services:
+  - type: web
+    name: zema-api
+    env: node
+    region: singapore
+    plan: free
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: ALLOWED_ORIGINS
+        value: "https://your-vercel-site.vercel.app"
+      - key: NODE_ENV
+        value: production

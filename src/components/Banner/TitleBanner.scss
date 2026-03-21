@@ -1,0 +1,17 @@
+.judul {
+  position: absolute;
+  top: 20px;
+  z-index: 2;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 25px;
+  letter-spacing: 10px;
+  color: #e8d49e;
+
+  @media screen and (max-width: 1024px) {
+    font-size: 15px;
+  }
+
+  @media screen and (max-width: 501px) {
+    font-size: 10px;
+  }
+}

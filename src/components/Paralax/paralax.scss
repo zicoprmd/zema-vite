@@ -1,0 +1,91 @@
+.paralax {
+  position: relative;
+  overflow: hidden;
+
+  .paralax-img {
+    background-image: url('../../assets/paralax/paralax-1.JPG');
+    height: 75vh;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: filter 3s ease;
+
+    @media screen and (max-width: 768px) {
+      background-attachment: scroll;
+      background-size: cover;
+      height: 60vh;
+    }
+  }
+
+  .gray {
+    filter: grayscale(100%);
+  }
+
+  .paralax-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.38) 0%,
+      rgba(0, 0, 0, 0.18) 50%,
+      rgba(0, 0, 0, 0.42) 100%
+    );
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .paralax-content {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    text-align: center;
+    padding: 2rem;
+
+    .paralax-label {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: #e8d49e;
+      opacity: 0.9;
+    }
+
+    .paralax-name {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 5vw, 4.5rem);
+      font-weight: 700;
+      color: #fffcf8;
+      letter-spacing: 0.06em;
+      line-height: 1.15;
+      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+
+      @media screen and (max-width: 480px) {
+        font-size: clamp(1.6rem, 8vw, 2.5rem);
+        letter-spacing: 0.03em;
+      }
+    }
+
+    .paralax-tagline {
+      font-family: 'Lato', sans-serif;
+      font-style: italic;
+      font-size: clamp(0.85rem, 1.5vw, 1.1rem);
+      font-weight: 300;
+      color: rgba(255, 252, 248, 0.78);
+      letter-spacing: 0.06em;
+    }
+
+    .paralax-ornament {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #e8d49e, transparent);
+      margin: 0 auto;
+    }
+  }
+}
