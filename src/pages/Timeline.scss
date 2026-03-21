@@ -14,7 +14,18 @@
   position: fixed;
   top: 1.5rem;
   left: 1.5rem;
+  right: 1.5rem;
   z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.top-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .timeline-home-btn {
