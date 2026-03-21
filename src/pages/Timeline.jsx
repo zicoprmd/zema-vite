@@ -163,23 +163,50 @@ const fetchGrowthData = async () => {
     const saved = localStorage.getItem('zema_growth_data');
     return saved ? JSON.parse(saved) : [];
   }
-  const { data } = await supabase.from('growth_data').select('*').order('date', { ascending: true });
-  return data || [];
+  const { data, error } = await supabase.from('growth_data').select('*').order('date', { ascending: true });
+  if (error) { console.error('Fetch growth error:', error); return []; }
+  // Map snake_case to camelCase
+  return (data || []).map(r => ({
+    id: r.id, date: r.date, height: r.height, weight: r.weight,
+    headCirc: r.head_circ, note: r.note, ageMonth: r.age_month, createdAt: r.created_at,
+  }));
 };
 
 const saveGrowthRecord = async (record) => {
+  // Map camelCase to snake_case for Supabase
+  const dbRecord = {
+    date: record.date,
+    height: record.height,
+    weight: record.weight,
+    head_circ: record.headCirc,
+    note: record.note,
+    age_month: record.ageMonth,
+  };
+
   if (!supabase) {
     const existing = JSON.parse(localStorage.getItem('zema_growth_data') || '[]');
     const idx = existing.findIndex(r => r.id === record.id);
-    if (idx >= 0) existing[idx] = record; else existing.push(record);
+    const toSave = { ...record, id: record.id || crypto.randomUUID() };
+    if (idx >= 0) existing[idx] = toSave; else existing.push(toSave);
     localStorage.setItem('zema_growth_data', JSON.stringify(existing));
-    return record;
+    return toSave;
   }
   if (record.id) {
-    const { data } = await supabase.from('growth_data').update(record).eq('id', record.id).select().single();
+    const { data, error } = await supabase
+      .from('growth_data')
+      .update({ ...dbRecord, id: record.id })
+      .eq('id', record.id)
+      .select()
+      .single();
+    if (error) { console.error('Update error:', error); return null; }
     return data;
   } else {
-    const { data } = await supabase.from('growth_data').insert([{ ...record, id: crypto.randomUUID() }]).select().single();
+    const { data, error } = await supabase
+      .from('growth_data')
+      .insert([{ ...dbRecord, id: crypto.randomUUID() }])
+      .select()
+      .single();
+    if (error) { console.error('Insert error:', error); return null; }
     return data;
   }
 };
@@ -199,7 +226,8 @@ const fetchMilestones = async () => {
     const saved = localStorage.getItem('zema_milestones');
     return saved ? JSON.parse(saved) : {};
   }
-  const { data } = await supabase.from('milestones').select('*').single();
+  const { data, error } = await supabase.from('milestones').select('*').maybeSingle();
+  if (error) { console.error('Fetch milestones error:', error); return {}; }
   return data?.achieved || {};
 };
 
@@ -208,7 +236,10 @@ const saveMilestones = async (achieved) => {
     localStorage.setItem('zema_milestones', JSON.stringify(achieved));
     return;
   }
-  await supabase.from('milestones').upsert({ id: 1, achieved }, { onConflict: 'id' });
+  const { error } = await supabase
+    .from('milestones')
+    .upsert({ id: 1, achieved, updated_at: new Date().toISOString() }, { onConflict: 'id' });
+  if (error) { console.error('Save milestones error:', error); }
 };
 
 // Supabase auth
@@ -330,10 +361,22 @@ const Timeline = () => {
       ageMonth: getAgeInMonths(growthForm.date),
     };
     const saved = await saveGrowthRecord(record);
+    if (!saved) { alert('Gagal menyimpan data'); return; }
+    // Normalize response to camelCase
+    const normalized = {
+      id: saved.id || record.id,
+      date: saved.date || record.date,
+      height: saved.height || record.height,
+      weight: saved.weight || record.weight,
+      headCirc: saved.headCirc ?? record.headCirc,
+      note: saved.note || record.note,
+      ageMonth: saved.ageMonth ?? record.ageMonth,
+      createdAt: saved.created_at || saved.createdAt,
+    };
     if (editingGrowth?.id) {
-      setGrowthRecords(records => records.map(r => r.id === saved.id ? saved : r));
+      setGrowthRecords(records => records.map(r => r.id === normalized.id ? normalized : r));
     } else {
-      setGrowthRecords(records => [...records, saved].sort((a, b) => new Date(a.date) - new Date(b.date)));
+      setGrowthRecords(records => [...records, normalized].sort((a, b) => new Date(a.date) - new Date(b.date)));
     }
     setShowGrowthForm(false);
     setEditingGrowth(null);
