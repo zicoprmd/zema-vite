@@ -1093,7 +1093,7 @@ const Timeline = () => {
               <span className="growth-summary__value">
                 {formatAge(currentAgeMonths)}
               </span>
-              <span className="growth-summary__sub">Lahir: 22 Agu 2022</span>
+              <span className="growth-summary__sub">Lahir: 25 Agu 2022</span>
             </div>
             <div className="growth-summary__card">
               <span className="growth-summary__label">Tertinggi</span>
