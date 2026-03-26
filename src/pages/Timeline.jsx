@@ -1212,6 +1212,8 @@ const Timeline = () => {
                     <YAxis
                       tick={{ fontSize: 11, fill: '#8a8a8a' }}
                       domain={['dataMin-2', 'dataMax+3']}
+                      // Format angka di sumbu Y
+                      tickFormatter={(value) => value.toFixed(1)}
                     />
                     <Tooltip
                       contentStyle={{
@@ -1220,6 +1222,8 @@ const Timeline = () => {
                         borderRadius: '12px',
                         fontSize: 12,
                       }}
+                      // Format angka di dalam Tooltip
+                      formatter={(value) => [value.toFixed(1), "Berat"]}
                     />
                     <ReferenceLine
                       x={formatAge(currentAgeMonths)}
