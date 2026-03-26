@@ -41,7 +41,7 @@ const supabase =
     : null;
 
 // Constants
-const ZEMA_BIRTHDAY = '2022-08-22';
+const ZEMA_BIRTHDAY = '2022-08-25';
 
 const getAgeInMonths = (date) => {
   const birth = new Date(ZEMA_BIRTHDAY);
@@ -393,70 +393,70 @@ const timelineMilestones = [
     id: 1,
     age: '6 Bulan',
     title: 'Enam Bulan',
-    description: 'Momen indah di usia 6 bulan.',
+    description: 'Momen indah di usia 6 bulan. Senyum pertamanya, suara tawanya, dan langkah awal dalam perjalanan hidup.',
     storageKey: '6bulan',
   },
   {
     id: 2,
     age: '1 Tahun',
     title: 'Satu Tahun',
-    description: 'Hari istimewa!',
+    description: 'Hari istimewa! Satu tahun penuh cinta, tawa, dan keajaiban. selamat datang di dunia!',
     storageKey: '1tahun',
   },
   {
     id: 3,
     age: '1.5 Tahun',
     title: 'Satu Setengah Tahun',
-    description: 'Waktu berlalu begitu cepat.',
+    description: 'Waktu berlalu begitu cepat. Setiap hari penuh dengan kajutan kecil yang membuat hati bahagia.',
     storageKey: '1_5tahun',
   },
   {
     id: 4,
     age: '2 Tahun',
     title: 'Dua Tahun',
-    description: 'Dua tahun penuh petualangan.',
+    description: 'Dua tahun penuh petualangan. Dunia menjadi tempat yang ajaib atas kehadiranmu',
     storageKey: '2tahun',
   },
   {
     id: 5,
     age: '2.5 Tahun',
     title: 'Dua Setengah Tahun',
-    description: 'Setiap langkahmu mengajarkan kami.',
+    description: 'Setiap langkahmu mengajarkan kami tentang cinta yang tidak bersyarat',
     storageKey: '2_5tahun',
   },
   {
     id: 6,
     age: '3 Tahun',
     title: 'Tiga Tahun',
-    description: 'Tiga tahun penuh keajaiban.',
+    description: 'Tiga tahun penuh keajaiban. Kamu adalah bulan di hari-hari kami',
     storageKey: '3tahun',
   },
   {
     id: 7,
     age: '3.5 Tahun',
     title: 'Tiga Setengah Tahun',
-    description: 'Waktu变得更加 sempurna.',
+    description: 'Waktu yang sempurna. Setiap momen bersama kamu adalah hadiah',
     storageKey: '3_5tahun',
   },
   {
     id: 8,
     age: '4 Tahun',
     title: 'Empat Tahun',
-    description: 'Empat tahun kebahagiaan.',
+    description: 'Empat tahun kebahagiaan. Imajinasi kamu tidak akan ada habisnya.',
     storageKey: '4tahun',
   },
   {
     id: 9,
     age: '4.5 Tahun',
     title: 'Empat Setengah Tahun',
-    description: 'Setiap hari lebih menakjubkan.',
+    description: 'Setiap hari kamu tumbuh menjadi pribadi yang lebih menakjubkan.',
     storageKey: '4_5tahun',
   },
   {
     id: 10,
     age: '5 Tahun',
     title: 'Lima Tahun',
-    description: 'Lima tahun penuh cinta.',
+    description: 'Lima tahun penuh cinta! Kamu adalah cerita terbaik yang pernah kami miliki',
     storageKey: '5tahun',
   },
 ];
