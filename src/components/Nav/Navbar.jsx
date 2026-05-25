@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 //scss
 import './Navbar.scss';
@@ -58,6 +58,11 @@ const Navbar = () => {
           className="blog-link">
           <BiBookHeart />
         </Link>
+        <Link
+          to="/learning"
+          className="learning-link">
+          <BiBookOpen />
+        </Link>
       </div>
 
       {/* Mobile single button */}
@@ -96,6 +101,13 @@ const Navbar = () => {
               className="mobile-popup__item blog-link">
               <BiBookHeart />
               <span>Blog</span>
+            </Link>
+            <Link
+              to="/learning"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="mobile-popup__item learning-link">
+              <BiBookOpen />
+              <span>Learning</span>
             </Link>
           </div>
         )}

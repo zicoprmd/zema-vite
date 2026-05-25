@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Little Lingua</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="stage" aria-label="Aplikasi belajar bahasa untuk anak">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">English + Mandarin</p>
+            <h1>Little Lingua</h1>
+          </div>
+          <button class="icon-button" id="soundToggle" type="button" aria-label="Suara aktif">
+            <span aria-hidden="true">♪</span>
+          </button>
+        </header>
+
+        <nav class="tabs" id="tabs" aria-label="Kategori belajar"></nav>
+
+        <section class="gamebar" aria-label="Mode belajar">
+          <div class="mode-switch" id="modeSwitch">
+            <button class="mode-button active" type="button" data-mode="flashcard">Flashcard</button>
+            <button class="mode-button" type="button" data-mode="quiz">Quiz</button>
+          </div>
+          <div class="score-pill" id="scorePill" aria-live="polite">Score 0/0</div>
+        </section>
+
+        <section class="hero-panel">
+          <div class="scene" aria-hidden="true">
+            <div class="sun"></div>
+            <div class="cloud cloud-one"></div>
+            <div class="cloud cloud-two"></div>
+            <div class="hill hill-one"></div>
+            <div class="hill hill-two"></div>
+            <div class="tree">
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          <div class="learning-card" id="learningCard" tabindex="0" role="button" aria-label="Kartu kata">
+            <div class="picture-wrap">
+              <div class="picture" id="picture"></div>
+            </div>
+            <div class="words">
+              <p class="word-label">English</p>
+              <h2 id="englishWord">Cat</h2>
+              <p class="word-label">Mandarin</p>
+              <h3 id="chineseWord">猫</h3>
+              <p class="pinyin" id="pinyinWord">mao</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="controls" aria-label="Kontrol kartu">
+          <button class="round-action" id="prevCard" type="button" aria-label="Kartu sebelumnya">‹</button>
+          <button class="speak-button" id="speakCard" type="button">
+            <span aria-hidden="true">▶</span>
+            Listen
+          </button>
+          <button class="round-action" id="nextCard" type="button" aria-label="Kartu berikutnya">›</button>
+        </section>
+
+        <section class="choice-row" id="choiceRow" aria-label="Pilihan kata"></section>
+
+        <div class="feedback" id="feedback" aria-live="polite"></div>
+
+        <footer class="progress-area" aria-label="Progres belajar">
+          <div class="stars" id="stars" aria-label="Bintang progres"></div>
+          <button class="mini-button" id="shuffleCard" type="button">Mix</button>
+        </footer>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>

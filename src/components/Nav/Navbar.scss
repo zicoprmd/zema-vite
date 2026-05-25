@@ -89,6 +89,25 @@
       transform: translateY(-2px);
     }
   }
+
+  .learning-link {
+    background-color: transparent;
+    padding: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 1.1rem;
+    color: #5db7de;
+    transition: all 0.35s ease;
+    text-decoration: none;
+
+    &:hover {
+      background-color: rgba(93, 183, 222, 0.12);
+      color: #2c83aa;
+      transform: translateY(-2px);
+    }
+  }
 }
 
 // Mobile parts - hidden by default
@@ -207,6 +226,20 @@
 
         &.active {
           background-color: #c97b5c;
+          color: #fffcf8;
+        }
+      }
+
+      &.learning-link {
+        color: #5db7de;
+
+        &:hover {
+          background-color: rgba(93, 183, 222, 0.12);
+          color: #2c83aa;
+        }
+
+        &.active {
+          background-color: #2c83aa;
           color: #fffcf8;
         }
       }

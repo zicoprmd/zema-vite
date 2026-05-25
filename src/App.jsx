@@ -1,4 +1,3 @@
-import { React } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './App.scss';
 import Navbar from './components/Nav/Navbar';
@@ -11,6 +10,7 @@ import Newsletter from './components/Newsletter/Newsletter';
 import Reserved from './components/Reserved/Reserved';
 import Timeline from './pages/Timeline';
 import Blog from './pages/Blog';
+import Learning from './pages/Learning';
 
 function App() {
   return (
@@ -29,6 +29,7 @@ function App() {
       } />
       <Route path="/timeline" element={<Timeline />} />
       <Route path="/blog" element={<Blog />} />
+      <Route path="/learning" element={<Learning />} />
     </Routes>
   );
 }
